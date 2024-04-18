@@ -1,7 +1,13 @@
 Start the server
 
+For development
 ```
 devtools-server runserver
+```
+
+For production
+```
+gunicorn devtools_server.server:application
 ```
 
 Create a collection

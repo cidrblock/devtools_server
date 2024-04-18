@@ -38,7 +38,7 @@ urlpatterns = (
 )
 
 
-app = get_wsgi_application()
+application = get_wsgi_application()
 
 
 def main(args: list[str] | None = None) -> None:
