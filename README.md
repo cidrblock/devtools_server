@@ -8,7 +8,7 @@ Create a collection
 
 ```
 curl -v -O -J --header "Content-Type: application/json" \
-  --data '{"collection":"namespace.name"}' \
+  --data '{"collection":"namespace.name", "project": "collection"}' \
   "localhost:8000/v1/creator/collection"
 ```
 
