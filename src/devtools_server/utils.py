@@ -13,8 +13,11 @@ from openapi_core.unmarshalling.request.datatypes import RequestUnmarshalResult
 
 OPENAPI = OpenAPI.from_dict(
     yaml.safe_load(
-        (importlib_resources.files("devtools_server.data") / "openapi.yaml").read_text(),
-    ))
+        (
+            importlib_resources.files("devtools_server.data") / "openapi.yaml"
+        ).read_text(),
+    ),
+)
 
 
 def validate_request(request: HttpRequest) -> RequestUnmarshalResult | HttpResponse:
