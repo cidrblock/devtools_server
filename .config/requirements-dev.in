@@ -1,0 +1,6 @@
+black
+ruff
+mypy
+pre-commit
+types-pyyaml
+django-stubs[compatible-mypy]

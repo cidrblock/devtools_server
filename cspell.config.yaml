@@ -1,0 +1,30 @@
+---
+dictionaryDefinitions:
+  - name: words
+    path: .config/dictionary.txt
+    addWords: true
+dictionaries:
+  - bash
+  - python
+  - words
+  - "!aws"
+  - "!backwards-compatibility"
+  - "!cryptocurrencies"
+  - "!cpp"
+ignorePaths:
+  # All dot files in the root
+  - \.*
+  # This file
+  - cspell.config.yaml
+  # The docs requirements file
+  - docs/requirements.in
+  # Ignore licenses
+  - licenses/*
+  # The mypy configuration file
+  - mypy.ini
+  # The shared file for tool configuration
+  - pyproject.toml
+  # The setup file
+  - setup.cfg
+  # constraints.txt is generated
+  - constraints.txt

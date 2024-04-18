@@ -1,0 +1,122 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools >= 45",
+  "setuptools_scm[toml]>=6.2"
+]
+
+[project]
+authors = [{"email" = "bthornto@redhat.com", "name" = "Bradley Thornton"}]
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Intended Audience :: Developers',
+  'License :: OSI Approved :: Apache Software License',
+  'Operating System :: OS Independent',
+  'Programming Language :: Python :: 3 :: Only',
+  'Programming Language :: Python :: 3',
+  'Programming Language :: Python :: 3.10',
+  'Programming Language :: Python :: 3.11',
+  'Programming Language :: Python :: 3.12',
+  'Programming Language :: Python :: Implementation :: CPython',
+  'Programming Language :: Python',
+  'Topic :: Software Development :: Code Generators',
+  'Topic :: Utilities'
+]
+description = "A devtools server."
+dynamic = ["dependencies", "optional-dependencies", "version"]
+keywords = ["ansible"]
+license = {text = "Apache"}
+maintainers = [{"email" = "info@ansible.com", "name" = "Ansible by Red Hat"}]
+name = "devtools-server"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+devtools-server = "devtools_server.server:main"
+
+[project.urls]
+changelog = "https://github.com/ansible-community/ansible-creator/releases"
+documentation = "https://ansible-creator.readthedocs.io/en/latest/"
+homepage = "https://github.com/ansible-community/ansible-creator"
+repository = "https://github.com/ansible-community/ansible-creator"
+
+[tool.mypy]
+files = ["src"]
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = ["ansible_creator.*", "openapi_core.*"]
+
+[tool.pydoclint]
+allow-init-docstring = true
+
+[tool.pylint]
+
+[tool.pylint.MASTER]
+ignore-patterns = 'test_*'
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint.master]
+good-names = "i,j,k,ex,Run,_,f,fh"
+ignore = [
+  "_version.py" # built by setuptools_scm
+]
+jobs = 0
+no-docstring-rgx = "__.*__"
+
+[tool.pylint.messages_control]
+disable = [
+  "C0114", # missing-module-docstring
+  "E0602", # undefined-variable / ruff F821
+  "R0913",
+  "too-few-public-methods",
+  "too-many-instance-attributes",
+  "too-many-locals"
+]
+
+[tool.ruff]
+builtins = ["__"]
+exclude = ['tests']
+fix = true
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+ignore = [
+  "C901",
+  "PTH100",
+  "PTH103",
+  "PTH108",
+  "PTH110",
+  "PTH111",
+  "PTH113",
+  "PTH118",
+  "PTH123",
+  "TRY400"
+]
+select = ["ALL"]
+
+[tool.ruff.lint.flake8-pytest-style]
+parametrize-values-type = "tuple"
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2 # Ensures consistency for cases when there's variable vs function/class definitions after imports
+lines-between-types = 1 # Separate import/from with 1 line
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ".config/requirements.in"}
+optional-dependencies.test = {file = [".config/requirements-dev.in"]}
+
+[tool.setuptools_scm]
+local_scheme = "no-local-version"
+write_to = "src/devtools_server/_version.py"
+
+[tool.tomlsort]
+in_place = true
+sort_inline_tables = true
+sort_table_keys = true
