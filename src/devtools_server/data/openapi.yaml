@@ -57,6 +57,8 @@ components:
       properties:
         collection:
           type: string
+        project:
+          type: string
     CreatorPlaybook:
       type: object
       additionalProperties: false
